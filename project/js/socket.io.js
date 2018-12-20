@@ -1,5 +1,6 @@
     let user = {}; 
         var socket = io.connect('http://127.0.0.1:5000/');
+        // http://192.168.1.12:5000 , http://127.0.0.1:5000/
          socket.on('connect', (msg)=>{
             console.log(socket.id); 
             socket.send('sending to the server, did you hear me ?'); 
@@ -48,3 +49,32 @@
         socket.on("message" , (d)=>{
             console.log(d);
         })
+
+
+
+        // setInterval(() => {
+        //     var queue  = document.getElementById("queue"); 
+        //     var node = document.createElement("LI");   
+        //     node.className = "list-group-item list-group-item-success animated bounceInLeft"; 
+        //     node.textContent = "this is from upcoming interval"; 
+        //     queue.appendChild(node); 
+        // }, 2000);
+         re = ()=>{
+            // var queue  = document.getElementById("queue"); 
+            // var node = document.createElement("LI");   
+            // node.className = "list-group-item list-group-item-success animated bounceInLeft"; 
+            // node.textContent = "this is from upcoming interval"; 
+            // queue.appendChild(node); 
+
+            
+            $("ul > li").each(function() {
+                console.log(this); 
+                console.log($(this).text());
+                if($(this).text() =="Taher"){
+                    $(this).addClass("bounceOutLeft animated"); 
+                    $(this).remove(); 
+                }
+
+                // $(this).remove();           
+            });
+         }
