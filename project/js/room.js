@@ -4,6 +4,9 @@ class Room{
         this.name= name; 
         this.talkingUser= null; 
     }
+    createRoom(){
+        //
+    }
     initiateRoom(users){
         console.log("initiating room");
         if(users)
