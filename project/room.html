@@ -16,36 +16,101 @@
 </head>
 <body>
     
-    <div class="welcome-body">
+    <div style="" class="welcome-body">
             <div class="container-center" >
                     <div class="headerr"><span >Bo</span><i class="gradient fas fa-wine-bottle rotate-me"></i><i class="fas fa-wine-bottle inverse-rotate-me"></i><span>LE</span></div>
                   </div>
             
                       <div class="row footer-container">
                       <section class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
-                     <button type="button"  onclick="createRoomOnClick()"  class="createroom">
+                     <button data-toggle="modal" data-target="#createRoomModal"
+                      type="button"    class="createroom">
                          Create Room
                      </button>
                       </section>
                       <section class="col-lg-6 col-md-6">
-                            <button type="button"  onclick="joinRoomOnClick()" class="openroom">
+                            <button data-toggle="modal" data-target="#modalRoomName"
+                             type="button"   class="openroom">
                                Join Room
                             </button>
                             <button type="button" onclick="clickTest()" class="openroom">
                               Test
                            </button>
                              </section>
-            
-            
-            
+                             <button id="user-button" style="display : none; " type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                Launch demo modal
+                              </button>
+
+
+                           
                   </div>
+
+
+
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">User Name</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="user-name-input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="modal-footer">
+                          <button onclick="createUserOnClick()" data-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal fade" id="modalRoomName" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Join Room</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="room-name-input" id="user-name-input" type="text" class="form-control" placeholder="Room Name" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="modal-footer">
+                          <button onclick="joinRoomOnClick()" data-dismiss="modal"  type="button" class="btn btn-primary">Join Room</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Create Room</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="room-create-input" id="user-name-input" type="text" class="form-control" placeholder="Room Create" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="modal-footer">
+                          <button onclick="createRoomOnClick()" data-dismiss="modal"  type="button" class="btn btn-primary">Create Room</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
     </div>
 
-    <div class="room-body">
+    <div style="" class="room-body">
     <div class="room-info">
         <nav class="navbar navbar-light bg-light">
             <div class="form-inline">
-              <span class="navbar-brand" >Room Title</span>
+              <span id="navbar-brand" class="navbar-brand" >Room Title</span>
               <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Exit Room</button>
               <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Github Repo</button>
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tell us what do you think!</button>
@@ -54,9 +119,9 @@
     </div>
     <div id="queue" class="queue">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-success animated  bounceInLeft ">Amr
+            <!-- <li class="list-group-item list-group-item-success animated  bounceInLeft ">Amr
                 <span class="badge badge-primary badge-pill">14</span>
-</li>
+</li> -->
 
           </ul>
     </div>

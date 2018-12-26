@@ -12,13 +12,15 @@ class User {
         $('.welcome-body').hide(); 
         $('.room-body').show(); 
         room = new Room(roomName); 
+        $('#navbar-brand').html(roomName);
         factory.handleCreateRoom(); 
     }
     joinRoom(roomName){
         $('.welcome-body').hide(); 
         $('.room-body').show(); 
-        room = new Room(roomName); 
-        factory.handleJoinRoom(); 
+        room = new Room(roomName);
+        $('#navbar-brand').html(roomName);
+
     }
     leaveRoom(){
         //
