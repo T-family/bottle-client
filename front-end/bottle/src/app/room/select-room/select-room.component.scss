@@ -1,0 +1,15 @@
+.container{
+    margin-top: 250px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+}
+
+.container > a{
+    font-size: 1.3em;
+}
+
+mat-form-field{
+    transform: translateX(23px);
+}

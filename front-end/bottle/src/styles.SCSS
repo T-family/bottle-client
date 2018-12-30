@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+
+body{
+    background: #DDB41F;
+}
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item{
+    text-align: center !important;
+    border: none !important;
+}
+.ui-carousel .ui-carousel-viewport{
+    border: none !important;    
+}
+body .ui-carousel .ui-carousel-header{
+    background: transparent !important;
+    border: none !important;
+}
+main{
+    width: 80%;
+    margin: auto;
+}
+
+$neon: #00FFF8;
+
+/* Mixins */
+@mixin gradientBg($direction, $startColor, $endColor) {
+	background: $startColor;
+	background: -moz-linear-gradient($direction,  $startColor 0%, $endColor 80%,$endColor 100%);
+	background: -webkit-linear-gradient($direction,  $startColor 0%, $endColor 80%,$endColor 100%);
+	background: linear-gradient($direction,  $startColor 0%, $endColor 80%,$endColor 100%);
+}
+
+/* bg shortcodes */
+.bg-gradient1 span,
+.bg-gradient1:before {
+	@include gradientBg(180deg, #fa7e29, #F6682F);
+}
+.bg-gradient2 span,
+.bg-gradient2:before {
+	@include gradientBg(180deg, #39C2C9, #3FC8C9);
+}
+.pop-onhover.bg-gradient3 span,
+.pop-onhover.bg-gradient3:before {
+	@include gradientBg(180deg, #B9AEF0, #ADA1EB);
+}
+
+.bg-gradient4 span {
+	@include gradientBg(180deg, #F6682F, #F6682F);
+}
+// .bg-gradient4:before {
+// 		@include gradientBg(180deg, #d2d6df, #666a73);
+	// }
+
+/* General */
+.wrapper {
+  	margin: 4% auto;
+	text-align: center;
+}
+
+h3{
+	color: #666a73;
+	font-weight: 300;
+	letter-spacing: 0.06em;
+}
+
+a {
+	text-decoration: none;
+  
+	&:hover,
+	&:focus,
+	&:active {
+	  text-decoration: none;
+  }
+}
+
+/* fancy Button */
+@import './fancy-button.scss'

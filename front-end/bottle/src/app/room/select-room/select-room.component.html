@@ -1,0 +1,14 @@
+<div class="container">
+  <div>
+<a (click)='createRoom()' class="fancy-button bg-gradient1"><span><i class="fa fa-ticket"></i>CREATE room</span></a>
+<form class="example-form">
+    <mat-form-field>
+      <input matInput placeholder="your room name" [(ngModel)]='roomName' name="roomName">
+    </mat-form-field>
+  </form>
+</div>
+
+<div>
+<a (click)='openBottomSheet()' class="fancy-button bg-gradient1"><span><i class="fa fa-ticket"></i>join room </span></a>
+</div>
+</div>

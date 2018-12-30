@@ -29,7 +29,12 @@ if __name__ == '__main__':
 def handle_message(message):
     print('received message: ' + message)
     send(message , broadcast=True)
-    
+
+@socketio.on('testme')
+def tt(data):
+    print('tt called')
+    return 1   
+
 @socketio.on('connect')
 def test():
     print('connected from client')
@@ -55,7 +60,6 @@ def add_user_to_room(data):
     join_room(data["room"])
     print("{0} has joined the room".format(data["username"]))
     send(data["username"] + ' has entered the room.',room= data["room"])
-    socket
     return AssignedID
 
 @socketio.on("LeaveRoom")

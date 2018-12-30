@@ -1,0 +1,7 @@
+<p-carousel numVisible=5 [value]="items">
+  <ng-template let-item pTemplate="item" >
+    <div>
+      <img [class.enlarge]='selectedAvatar == item' (click)="selectAvatar(item)"  src="../assets/avatars/{{item}}.png" alt="">
+    </div>
+  </ng-template>
+</p-carousel>

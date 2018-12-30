@@ -1,0 +1,43 @@
+<h1>
+  Welcome To Bottle! 
+</h1>
+
+<p>An application that will let you communicate with groups easily</p>
+
+<p>each user can join a group of people and then they can each have a number in queue to talk, each one will have a max of 
+  10 seconds to talk! vwola thats it.
+</p>
+
+<iframe src="https://giphy.com/embed/26AHRsTEXSMgl3rXi" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/3o6ZtdLTaO5oidSO3u" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<p>We Solve the problem of people in groups talking and each one wanting to talk at the same time <mat-icon class="mat-18">sort_by_alpha</mat-icon></p>
+
+<p style="margin-bottom: 200px;">Each user shall have a name and he can join a room in which it contains other users he can communicate with</p>
+
+
+<h1>GETTING STARTED</h1>
+<p>first, pick your avatar and name below:</p>
+
+<app-avatar-gallery (selectedAvatarEmitter)='setAvatar($event)'></app-avatar-gallery>
+
+
+<br><br>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]='userName' name="name" matInput placeholder="Your Name">
+    </mat-form-field>
+
+    <div class="">
+    <a (click)='done()' class="fancy-button bg-gradient1"><span><i class="fa fa-ticket"></i>Done</span></a>
+    </div>
+</form>
+
+
+      <!-- <br><br> -->
+        <!-- <a href="#" class="fancy-button pop-onhover bg-gradient1"><span>Publish</span></a> -->
+        <!-- <a href="#" class="fancy-button pop-onhover bg-gradient3"><span><i class="fa fa-pencil"></i>Edit</span></a> -->
+        
+        <!-- <a href="#" target="_blank" class="fancy-button pop-onhover bg-gradient4"><span>Save</span></a> -->
+        
+        
+<!-- /.wrapper -->

@@ -1,0 +1,13 @@
+<mat-toolbar color="">
+    <mat-toolbar-row>
+      
+      <span> <img width="40" height="40" src="../../assets/avatars/{{bottle.user.avatar}}.png" alt="">{{bottle.user.name}}</span>
+      <span class="example-spacer"></span>
+      <span>ROOM: {{(bottle.room?.name) ? bottle.room.name : 'NONE'}} </span>
+      <span class="example-spacer"></span>
+      <button mat-button color="">Exit Room
+      </button> 
+      <span class="example-spacer"></span>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
