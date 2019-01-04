@@ -1,0 +1,23 @@
+
+
+  <div *ngIf="bottleService?.speakingUser" class="bubble x1 animated infinite pulse">
+      <img class="talker-img" src="../../../assets/avatars/man.png" alt="">
+      <p>{{bottleService.speakingUser.name}} is talking</p>
+
+
+  </div>
+
+<div class="queue">
+
+
+</div>
+<button (click)="joinQueue();" class="control-btn animated  bounceInLeft " mat-raised-button color="primary">Join Queue</button>
+<button (click)="addToQueue()" class="control-btn animated  bounceInRight delay-1s" mat-raised-button color="warn">Leave Queue</button>
+
+
+<div class="queue">
+<div *ngFor="let i of arr"  class="animated  jackInTheBox bubble2">
+    <img src="../../../assets/avatars/dog.png" alt="">
+    <p>Kamal</p>
+    </div>
+  </div>

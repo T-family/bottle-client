@@ -1,0 +1,80 @@
+
+
+.bubble {
+	border-radius: 50%;
+		box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+	
+    height: 220px;
+	position: absolute;
+    width: 220px;
+    left: 35%;
+    top: 50%;
+    text-align: center;
+}
+
+
+.bubble:after .bubble2:after{
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.5)), color-stop(70%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	
+    -webkit-box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+	
+	content: "";
+    height: 180px;
+	left: 10px;
+	position: absolute;
+	width: 180px;
+}
+.name{
+    position: relative;
+    top: 50%;
+    left: 22%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+}
+.queue{
+display: flex;
+word-wrap: break-word;
+flex-direction: column;
+
+.bubble2{
+    flex: 1 0 auto; 
+    width:200px;
+    word-wrap:break-word;
+	border-radius: 50%;
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+    height: 110px;
+    width: 110px;
+    margin: 5px;
+    text-align: center;
+    img {
+        width: 59px;
+    }
+    p{
+        margin: 0;
+    }
+}
+}
+
+.control-btn {
+    display: block;
+    width: 100%;
+    font-size: 22px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+    img{
+        width: 110px;
+    }
