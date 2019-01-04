@@ -1,18 +1,6 @@
 <mat-nav-list>
-    <a  mat-list-item (click)="openLink($event)">
-      <span mat-line>Google Keep</span>
-      <span mat-line>Add to a note</span>
-    </a>
-    <a  mat-list-item (click)="openLink($event)">
-      <span mat-line>Google Keep</span>
-      <span mat-line>Add to a note</span>
-    </a>
-    <a  mat-list-item (click)="openLink($event)">
-      <span mat-line>Google Keep</span>
-      <span mat-line>Add to a note</span>
-    </a>
-    <a  mat-list-item (click)="openLink($event)">
-      <span mat-line>Google Keep</span>
-      <span mat-line>Add to a note</span>
+    <a *ngFor="let room of bottle.roomNames"  mat-list-item (click)="openLink(room)">
+      <span mat-line>Room Name </span>
+      <span mat-line>{{room}}</span>
     </a>
   </mat-nav-list>

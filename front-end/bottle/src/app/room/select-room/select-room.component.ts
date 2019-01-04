@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef, MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
+import { WebsocketService } from 'src/app/shared/websocket.service';
+import { BottleService } from 'src/app/bottle.service';
 
 @Component({
   selector: 'app-select-room',
@@ -10,19 +12,30 @@ import { Router } from '@angular/router';
 export class SelectRoomComponent implements OnInit {
 
   roomName: string;
-  constructor(private bottomSheet: MatBottomSheet, private snack: MatSnackBar) { }
+  constructor(
+    private router: Router,
+    private webSocket: WebsocketService,
+    private bottomSheet: MatBottomSheet, private snack: MatSnackBar) { }
 
   ngOnInit() {
   }
-  openBottomSheet(): void {
+  async openBottomSheet()  {
+    await this.webSocket.getRoomNames();
     this.bottomSheet.open(BottomSheetOverviewSheet);
   }
-  createRoom() {
+  async createRoom() {
     if (!this.roomName || this.roomName.length === 0) {
       this.snack.open('should enter a room name' , 'Kay.' , {duration: 2200});
     } else {
-      // handle logic.
+      const createRoom = await this.webSocket.createRoom(this.roomName);
+      console.log(createRoom);
+      this.router.navigate(['/room']);
     }
+  }
+  async joinQueue() {
+    this.webSocket.joinQueue().then(d => {
+      console.log(d);
+    });
   }
 }
 
@@ -33,10 +46,14 @@ export class SelectRoomComponent implements OnInit {
 })
 // tslint:disable-next-line:component-class-suffix
 export class BottomSheetOverviewSheet {
-  constructor(private bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewSheet> , private router: Router) {}
+  constructor(
+    private bottle: BottleService,
+    private webSocket: WebsocketService,
+    private bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewSheet> , private router: Router) {}
 
-  openLink(event: MouseEvent): void {
+  async openLink(event) {
+    const room = await this.webSocket.joinRoom(event);
     this.bottomSheetRef.dismiss();
-    this.router.navigate(['/main']);
+    this.router.navigate(['/room']);
   }
 }

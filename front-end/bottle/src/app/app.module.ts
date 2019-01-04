@@ -16,6 +16,7 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { SelectRoomComponent, BottomSheetOverviewSheet } from './room/select-room/select-room.component';
+import { RoomComponent } from './room/room/room.component';
 
 
 
@@ -31,6 +32,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     UserBarComponent,
     SelectRoomComponent,
     BottomSheetOverviewSheet,
+    RoomComponent,
   ],
   entryComponents : [ BottomSheetOverviewSheet ],
   imports: [
