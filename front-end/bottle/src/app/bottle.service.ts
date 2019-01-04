@@ -9,8 +9,11 @@ import { BehaviorSubject } from 'rxjs';
 export class BottleService {
   public user: User;
   public room: Room;
+  public speakingUser: User;
+  public roomNames: any[];
   public queueListener: BehaviorSubject<number> = new BehaviorSubject<number>(null); // to set the user number in queue
   constructor() {
+    this.roomNames = [];
   }
 
   createUser(name , avatar) {
@@ -24,5 +27,12 @@ export class BottleService {
   }
   updateRoom(roomUpdates) {
     // handle
+  }
+  setSpeakingUser(name , id) {
+    this.speakingUser = new User(name, 'boy');
+    this.speakingUser.id = id;
+  }
+  clearRoom() {
+    this.room = null;
   }
 }
