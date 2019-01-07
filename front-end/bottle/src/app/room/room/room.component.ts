@@ -11,7 +11,7 @@ export class RoomComponent implements OnInit {
 
   inQueue: Boolean;
   arr = [1 , 3 , 4];
-  constructor(private bottleService: BottleService , private webSocket: WebsocketService) {
+  constructor(public bottleService: BottleService , public webSocket: WebsocketService) {
 
   }
 

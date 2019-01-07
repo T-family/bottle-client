@@ -51,7 +51,7 @@ export class SelectRoomComponent implements OnInit {
 // tslint:disable-next-line:component-class-suffix
 export class BottomSheetOverviewSheet {
   constructor(
-    private bottle: BottleService,
+    public bottle: BottleService,
     private webSocket: WebsocketService,
     private bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewSheet> , private router: Router) {}
 

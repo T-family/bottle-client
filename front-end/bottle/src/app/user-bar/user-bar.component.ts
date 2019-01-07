@@ -10,8 +10,8 @@ import { WebsocketService } from '../shared/websocket.service';
 })
 export class UserBarComponent implements OnInit {
 
-  constructor(private bottle: BottleService ,
-     private router: Router , private webSocket: WebsocketService) { }
+  constructor(public bottle: BottleService ,
+     private router: Router , public webSocket: WebsocketService) { }
 
   ngOnInit() {
   }

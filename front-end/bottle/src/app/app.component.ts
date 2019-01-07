@@ -13,7 +13,7 @@ import { BottleService } from './bottle.service';
 export class AppComponent {
   messages: Subject<any>;
 
-  constructor(private wsService: WebsocketService , private bottle: BottleService) {
+  constructor(private wsService: WebsocketService , public bottle: BottleService) {
     this.messages = wsService.connect();
     this.messages.subscribe(d => {
       console.log(d);
