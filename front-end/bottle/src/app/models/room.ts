@@ -16,6 +16,7 @@ export interface ServerMessage {
     Queue?: any;
     userID?: any;
     username?: any;
+    avatar?: string;
 }
 
 export enum MessageTypes {

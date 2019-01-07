@@ -1,7 +1,7 @@
 
 
   <div *ngIf="bottleService?.speakingUser" class="bubble x1 animated infinite pulse">
-      <img class="talker-img" src="../../../assets/avatars/man.png" alt="">
+      <img class="talker-img" src="../../../assets/avatars/{{bottleService.speakingUser.avatar}}.png" alt="">
       <p>{{bottleService.speakingUser.name}} is talking</p>
 
 

@@ -17,16 +17,24 @@ export class WebsocketService {
   // tslint:disable-next-line:typedef-whitespace
   connect() : Rx.Subject<MessageEvent> {
 
-    this.socket = io('http://127.0.0.1:5000/');
+    this.socket = io('http://104.248.183.178:5000/');
     // tslint:disable-next-line:no-shadowed-variable
     const observable = new Observable(observer => {
       this.socket.on('message' , (message: ServerMessage) => {
+        console.log(message);
         // handle message.
         if (message.type === MessageTypes.userStartedSpeaking ) {
-          this.bottle.setSpeakingUser(message.username , message.userID);
+          this.bottle.setSpeakingUser(message);
         }
         if (message.type === MessageTypes.userStoppedSpeaking) {
           this.bottle.speakingUser = null ;
+        }
+      });
+      this.socket.on('disconnect' , () => {
+        if (this.bottle.room) {
+          this.leaveRoom();
+        } else {
+          this.socket.disconnect();
         }
       });
       return () => {
@@ -52,7 +60,8 @@ export class WebsocketService {
   }
   createRoom(roomName) {
     return new Promise((res , reject) => {
-      this.socket.emit('CreateRoom' , {room : roomName , username : this.bottle.user.name }  , (userId) => {
+      this.socket.emit('CreateRoom' , {room : roomName , username : this.bottle.user.name ,
+         avatar: this.bottle.user.avatar }  , (userId) => {
         console.log('created room of name ' , roomName , 'and had id of : ' , userId);
         this.bottle.setUserId(userId);
         this.bottle.createRoom(roomName);
@@ -63,7 +72,9 @@ export class WebsocketService {
   }
   joinRoom(roomName) {
     return new Promise((res , rej) => {
-      this.socket.emit('JoinRoom' , {room : roomName , username : this.bottle.user.name} , (data) => {
+      this.socket.emit('JoinRoom' , {room : roomName ,
+         avatar: this.bottle.user.avatar,
+         username : this.bottle.user.name} , (data) => {
         this.bottle.setUserId(data.AssignedID);
         this.bottle.createRoom(roomName);
         const roomJSOM = JSON.parse(data.Room);
@@ -80,7 +91,8 @@ export class WebsocketService {
   joinQueue() {
     return new Promise((res , rej) => {
       this.socket.emit('JoinQueue' ,
-      {room: this.bottle.room.name , userID: this.bottle.user.id , username : this.bottle.user.name} , () => {
+      {room: this.bottle.room.name , userID: this.bottle.user.id , username : this.bottle.user.name
+        , avatar : this.bottle.user.avatar} , () => {
         res('success');
       });
     });

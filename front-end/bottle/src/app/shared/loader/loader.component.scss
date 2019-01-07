@@ -1,0 +1,23 @@
+    .inner {
+      position: absolute;
+      top: 50%;
+      z-index: 999999;
+  
+      left: 50%;
+      transform: translate(-50%, -50%);
+      img {
+        margin-right: 12px;
+      }
+    }
+  
+    .cont {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #f4f1f1;
+      opacity: 0.75 !important;
+      z-index: 999999;
+    }
+  

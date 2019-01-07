@@ -42,7 +42,7 @@ class SocketFactory{
     }
 }
 
-let factory = new SocketFactory('http://127.0.0.1:5000/'); 
+let factory = new SocketFactory('http://104.248.183.178/'); 
 factory.initiateConnection(); 
 factory.socket.on('connect' , ()=>{
     console.log("im connected"); 

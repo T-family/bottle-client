@@ -12,15 +12,19 @@ import { BottleService } from 'src/app/bottle.service';
 export class SelectRoomComponent implements OnInit {
 
   roomName: string;
+  Loading: Boolean;
   constructor(
     private router: Router,
     private webSocket: WebsocketService,
     private bottomSheet: MatBottomSheet, private snack: MatSnackBar) { }
 
   ngOnInit() {
+    this.Loading = false;
   }
   async openBottomSheet()  {
+    this.Loading = true;
     await this.webSocket.getRoomNames();
+    this.Loading = false;
     this.bottomSheet.open(BottomSheetOverviewSheet);
   }
   async createRoom() {

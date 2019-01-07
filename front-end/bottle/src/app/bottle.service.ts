@@ -28,9 +28,13 @@ export class BottleService {
   updateRoom(roomUpdates) {
     // handle
   }
-  setSpeakingUser(name , id) {
-    this.speakingUser = new User(name, 'boy');
-    this.speakingUser.id = id;
+  setSpeakingUser(data) {
+    if (data.avatar) {
+    this.speakingUser = new User(data.username, data.avatar);
+    } else {
+      this.speakingUser = new User(data.username , 'boy');
+    }
+    this.speakingUser.id = data.userID;
   }
   clearRoom() {
     this.room = null;

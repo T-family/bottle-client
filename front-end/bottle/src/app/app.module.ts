@@ -17,6 +17,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { SelectRoomComponent, BottomSheetOverviewSheet } from './room/select-room/select-room.component';
 import { RoomComponent } from './room/room/room.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 
 
@@ -33,6 +34,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     SelectRoomComponent,
     BottomSheetOverviewSheet,
     RoomComponent,
+    LoaderComponent,
   ],
   entryComponents : [ BottomSheetOverviewSheet ],
   imports: [
