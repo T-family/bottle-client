@@ -21,6 +21,16 @@ export class RoomComponent implements OnInit {
 
   async joinQueue() {
     this.webSocket.joinQueue().then(d => {
+      console.log(d);
+    }).catch(err => {
+      console.log(err);
+      console.log('walahy mana me5alek tetkalm');
+      const audio = new Audio();
+      const names = ['zeyad' , 'amar' , 'farida' , 'trio' , 'maynfa3sh'];
+      const selected = names[Math.ceil(Math.random() * names.length - 1 )];
+      audio.src = `../../../assets/voices/${selected}.mp3`;
+      audio.load();
+      audio.play();
     });
   }
   addToQueue() {

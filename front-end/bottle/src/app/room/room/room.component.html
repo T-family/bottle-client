@@ -10,14 +10,14 @@
 <div class="queue">
 
 
-</div>
-<button (click)="joinQueue();" class="control-btn animated  bounceInLeft " mat-raised-button color="primary">Join Queue</button>
-<button (click)="addToQueue()" class="control-btn animated  bounceInRight delay-1s" mat-raised-button color="warn">Leave Queue</button>
+</div> 
+<button style="margin-top:30px;" (click)="joinQueue();" class="control-btn animated  bounceInLeft " mat-raised-button color="primary">Join Queue</button>
+<!-- <button (click)="addToQueue()" class="control-btn animated  bounceInRight delay-1s" mat-raised-button color="warn">Leave Queue</button> -->
 
 
 <div class="queue">
-<div *ngFor="let i of arr"  class="animated  jackInTheBox bubble2">
-    <img src="../../../assets/avatars/dog.png" alt="">
-    <p>Kamal</p>
+<div *ngFor="let person of bottleService.room.queue"  class="animated  jackInTheBox bubble2">
+    <img src="../../../assets/avatars/{{person.avatar}}.png" alt="">
+    <p>{{person.username}}</p>
     </div>
   </div>

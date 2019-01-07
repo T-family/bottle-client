@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from './models/user';
 import { Room } from './models/room';
 import { BehaviorSubject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -38,5 +37,25 @@ export class BottleService {
   }
   clearRoom() {
     this.room = null;
+  }
+  removeUserFromQueue(name , id) {
+    console.log(this.room.queue);
+    this.room.queue = this.room.queue.filter(el => (el.userID !== id));
+    console.log(this.room.queue);
+  }
+  public permitToJoinQueue() {
+    if (this.speakingUser === undefined || this.speakingUser === null) {
+      return true;
+    }
+    let permit = true;
+    if (this.user.getId() === this.speakingUser.getId()) {
+      permit = false;
+    }
+    this.room.queue.forEach(user => {
+      if (user.userID === this.user.getId()) {
+        permit = false;
+      }
+    });
+    return permit;
   }
 }

@@ -8,6 +8,9 @@ export class User {
     public set id(value: number) {
         this._id = value;
     }
+    public getId() {
+        return this._id;
+    }
     constructor(name , avatar) {
         this.name = name;
         this.avatar = avatar;

@@ -17,7 +17,7 @@ export class WebsocketService {
   // tslint:disable-next-line:typedef-whitespace
   connect() : Rx.Subject<MessageEvent> {
 
-    this.socket = io('http://104.248.183.178:5000/');
+    this.socket = io('http://104.248.183.178:5000');
     // tslint:disable-next-line:no-shadowed-variable
     const observable = new Observable(observer => {
       this.socket.on('message' , (message: ServerMessage) => {
@@ -25,9 +25,17 @@ export class WebsocketService {
         // handle message.
         if (message.type === MessageTypes.userStartedSpeaking ) {
           this.bottle.setSpeakingUser(message);
-        }
-        if (message.type === MessageTypes.userStoppedSpeaking) {
+          this.bottle.removeUserFromQueue(message.username , message.userID);
+
+        } else if (message.type === MessageTypes.userStoppedSpeaking) {
           this.bottle.speakingUser = null ;
+        } else if (message.type === MessageTypes.userJoinsQueue) {
+          const tempUser = {
+            avatar : message.avatar ,
+            username : message.username ,
+            userID : message.userID,
+          };
+          this.bottle.room.queue.push(tempUser);
         }
       });
       this.socket.on('disconnect' , () => {
@@ -79,10 +87,23 @@ export class WebsocketService {
         this.bottle.createRoom(roomName);
         const roomJSOM = JSON.parse(data.Room);
         this.bottle.room.talker = roomJSOM.talker;
-        this.bottle.room.queue = roomJSOM.queue;
+        this.bottle.room.queue = [];
+        roomJSOM.queue.forEach(item => {
+          this.bottle.room.queue.push(JSON.parse(item));
+        });
+        // transform data:
+        if (this.bottle.room.queue.length > 0) {
+        this.bottle.room.queue = this.bottle.room.queue.map(el => {
+          return {
+            username: el.name,
+            userID: el.id,
+            avatar: el.avatar
+          };
+        });
+      }
+        console.log(roomJSOM.queue);
         this.bottle.room.users = Object.values(roomJSOM.userID_map_Username);
-        console.log(JSON.parse(data.Room));
-        console.log(JSON.parse(data.Room));
+
         console.log(this.bottle.room);
         res(this.bottle.room);
       });
@@ -90,11 +111,15 @@ export class WebsocketService {
   }
   joinQueue() {
     return new Promise((res , rej) => {
-      this.socket.emit('JoinQueue' ,
+       if (!this.bottle.permitToJoinQueue()) {
+        rej(false);
+       } else {
+       this.socket.emit('JoinQueue' ,
       {room: this.bottle.room.name , userID: this.bottle.user.id , username : this.bottle.user.name
         , avatar : this.bottle.user.avatar} , () => {
-        res('success');
+        res(true);
       });
+    }
     });
   }
   leaveRoom() {
